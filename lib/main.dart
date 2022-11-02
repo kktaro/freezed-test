@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:freezed_test/vo/default_value/default_value.dart';
+import 'package:freezed_test/vo/serializable_value/serializable_value.dart';
+import 'package:freezed_test/vo/standard_value/standard_value.dart';
 
 void main() {
   runApp(const MyApp());
@@ -63,6 +66,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final defaultValue = DefaultValue();
+    print(defaultValue.toString());
+
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
