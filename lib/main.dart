@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:freezed_test/vo/default_value/default_value.dart';
-import 'package:freezed_test/vo/serializable_value/serializable_value.dart';
-import 'package:freezed_test/vo/standard_value/standard_value.dart';
+import 'package:freezed_test/vo/example_state/example_state.dart';
 
 void main() {
   runApp(const MyApp());
@@ -66,8 +64,19 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final defaultValue = DefaultValue();
-    print(defaultValue.toString());
+    late ExampleState state;
+
+    state = ExampleState<int>.data(100);
+    // state = ExampleState<int>.loading();
+    // state = ExampleState<int>.error(Exception());
+
+    print(
+      state.maybeWhen(
+        loading: () => 'now loading',
+        error: (exception) => 'exception: ${exception.toString()}',
+        orElse: () => 'returns orElse Value',
+      )
+    );
 
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
